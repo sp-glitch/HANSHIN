@@ -15,8 +15,15 @@ $(function () {
     pauseOnHover: false,
   });
 
+  $(".visual_slide").on("afterChange", function (e, s, c) {
+    console.log(e, s, c); //c = 0,1
+
+    const current = $(".visual_slide .slick-current");
+    current.addClass("on").siblings().removeClass("on");
+  });
+
   $(".main_right_slide").slick({
-    arrows: true,
+    //arrows: true,
     dots: true,
   });
 
@@ -49,5 +56,24 @@ $(function () {
 
   $(".notice_right_arrow").mouseout(function () {
     $(".notice_right_arrow").removeClass("on");
+  });
+
+  $(window).on("scroll", function () {
+    let SCT = $(window).scrollTop();
+    console.log(SCT);
+
+    if (SCT > 400) {
+      $(".to_top").addClass("on");
+    } else {
+      $(".to_top").removeClass("on");
+    }
+  });
+
+  $(".to_top").on("click", function () {
+    $("html, body").animate({ scrollTop: 0 }, 400);
+  });
+
+  $(".popup_close").on("click", function () {
+    $(".popup_view").hide();
   });
 });

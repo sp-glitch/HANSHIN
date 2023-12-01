@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+img {
+    vertical-align: middle;
+    max-width: 100%;
+}
+
 body {
     line-height: 1;
     word-break: keep-all;
